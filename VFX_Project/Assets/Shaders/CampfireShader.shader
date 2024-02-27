@@ -8,8 +8,9 @@ Shader "CampfireShader"
 		_T_AlphaTextureTest("T_AlphaTextureTest", 2D) = "white" {}
 		_VerticalSpeed("VerticalSpeed", Float) = 1.5
 		_HorizontalSpeed("HorizontalSpeed", Float) = 0.3
+		_HorizontalTiling("HorizontalTiling", Float) = 1
 
-		[HideInInspector] _RenderQueueType("Render Queue Type", Float) = 5
+		[HideInInspector] _RenderQueueType("Render Queue Type", Float) = 1
 		[HideInInspector][ToggleUI] _AddPrecomputedVelocity("Add Precomputed Velocity", Float) = 1
 		//[HideInInspector] _ShadowMatteFilter("Shadow Matte Filter", Float) = 2.006836
 		[HideInInspector] _StencilRef("Stencil Ref", Int) = 0 // StencilUsage.Clear
@@ -209,9 +210,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -271,6 +272,7 @@ Shader "CampfireShader"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -579,7 +581,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord1.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord1.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord1.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -687,9 +689,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -733,6 +735,7 @@ Shader "CampfireShader"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -996,7 +999,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -1048,9 +1051,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1078,6 +1081,7 @@ Shader "CampfireShader"
             #include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -1388,7 +1392,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord2.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord2.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -1440,9 +1444,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1470,6 +1474,7 @@ Shader "CampfireShader"
 			int _PassValue;
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -1737,7 +1742,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -1780,9 +1785,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1806,6 +1811,7 @@ Shader "CampfireShader"
             #include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -2085,7 +2091,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -2139,9 +2145,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2169,6 +2175,7 @@ Shader "CampfireShader"
             #include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -2546,7 +2553,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord3.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord3.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord3.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -2621,9 +2628,9 @@ Shader "CampfireShader"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
-			#pragma shader_feature_local_fragment _ENABLE_FOG_ON_TRANSPARENT
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2661,6 +2668,7 @@ Shader "CampfireShader"
 			float4 _SelectionID;
 
             CBUFFER_START( UnityPerMaterial )
+			float _HorizontalTiling;
 			float _VerticalSpeed;
 			float _HorizontalSpeed;
 			float4 _EmissionColor;
@@ -2943,7 +2951,7 @@ Shader "CampfireShader"
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 				float2 texCoord15 = packedInput.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				float temp_output_16_0 = ( 1.0 - texCoord15.y );
-				float2 texCoord22 = packedInput.ase_texcoord2.xy * float2( 1,1 ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
+				float2 texCoord22 = packedInput.ase_texcoord2.xy * ( ( _HorizontalTiling * float2( 1,0 ) ) + float2( 0,1 ) ) + ( ( ( ( _VerticalSpeed * _TimeParameters.x ) % 1.0 ) * float2( 0,-1 ) ) + ( ( ( _HorizontalSpeed * _TimeParameters.x ) % 1.0 ) * float2( -1,0 ) ) );
 				float4 tex2DNode18 = tex2D( _T_AlphaTextureTest, texCoord22 );
 				float lerpResult11 = lerp( temp_output_16_0 , tex2DNode18.r , 0.41);
 				float smoothstepResult19 = smoothstep( 0.3 , 0.8 , lerpResult11);
@@ -3201,32 +3209,26 @@ Shader "CampfireShader"
 /*ASEBEGIN
 Version=19201
 Node;AmplifyShaderEditor.SamplerNode;18;-1547.55,233.0564;Inherit;True;Property;_T_AlphaTextureTest;T_AlphaTextureTest;0;0;Create;True;0;0;0;False;0;False;-1;d7be84cbf4e328a4fb89ee5db3add904;d7be84cbf4e328a4fb89ee5db3add904;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TextureCoordinatesNode;22;-1783.184,257.6159;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TextureCoordinatesNode;22;-1783.184,257.6159;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.OneMinusNode;16;-1501.98,16.77113;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;15;-1772.022,-166.39;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.LerpOp;13;-640.1028,-444.8343;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;14;-1013.627,-603.4847;Inherit;False;Constant;_Color0;Color 0;9;0;Create;True;0;0;0;False;0;False;1,0.6624398,0.1084906,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;17;-1014.703,-427.8623;Inherit;False;Constant;_Color1;Color 0;9;0;Create;True;0;0;0;False;0;False;0.6981132,0.1571927,0.009878943,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.LerpOp;11;-1161.087,254.1975;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;20;-1393.651,530.8973;Inherit;False;Constant;_TextureInfluence;Texture Influence;9;0;Create;True;0;0;0;False;0;False;0.41;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;89;-1100.351,-163.4975;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;91;-1332.915,113.2023;Inherit;False;Constant;_TextureInfluence1;Texture Influence;9;0;Create;True;0;0;0;False;0;False;0.6;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SmoothstepOpNode;19;-831.7227,255.7512;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.3;False;2;FLOAT;0.8;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SmoothstepOpNode;90;-790.756,-162.9269;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.3;False;2;FLOAT;0.8;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;107;-1987.165,302.7169;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleRemainderNode;24;-2395.606,70.80193;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;26;-2198.296,175.7344;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.Vector2Node;25;-2393.485,198.8019;Inherit;False;Constant;_Vector0;Vector 0;1;0;Create;True;0;0;0;False;0;False;0,-1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
-Node;AmplifyShaderEditor.SimpleTimeNode;23;-2790.606,72.80194;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;111;-2542.165,-7.283142;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleRemainderNode;108;-2348.214,441.2751;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;109;-2150.904,546.2076;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.Vector2Node;110;-2346.093,569.2751;Inherit;False;Constant;_Vector1;Vector 0;1;0;Create;True;0;0;0;False;0;False;-1,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;113;-2534.878,440.7972;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;106;-2794.165,-64.28314;Inherit;False;Property;_VerticalSpeed;VerticalSpeed;1;0;Create;True;0;0;0;False;0;False;1.5;1.5;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;112;-2778.408,438.91;Inherit;False;Property;_HorizontalSpeed;HorizontalSpeed;2;0;Create;True;0;0;0;False;0;False;0.3;0.88;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SmoothstepOpNode;117;-504.847,280.5848;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.4;False;1;FLOAT;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;118;-8,8;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;CampfireShader;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Transparent=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;_SrcBlend;0;True;_DstBlend;1;0;True;_AlphaSrcBlend;0;True;_AlphaDstBlend;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullModeForward;False;False;False;True;True;True;True;True;0;True;_ColorMaskTransparentVel;False;False;False;False;False;True;True;0;True;_StencilRef;255;False;;255;True;_StencilWriteMask;7;False;;3;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;0;True;_ZWrite;True;0;True;_ZTestDepthEqualForOpaque;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;31;Surface Type;1;638445661601181054;  Rendering Pass ;0;0;  Rendering Pass;1;0;  Blending Mode;0;0;  Receive Fog;1;0;  Distortion;0;0;    Distortion Mode;0;0;    Distortion Only;1;0;  Depth Write;1;0;  Cull Mode;0;0;  Depth Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;Receive Decals;1;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Shadow Matte;0;0;Cast Shadows;1;0;DOTS Instancing;0;0;GPU Instancing;1;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;LOD CrossFade;0;0;0;8;True;True;True;True;True;True;False;True;False;;False;0
+Node;AmplifyShaderEditor.RangedFloatNode;112;-2778.408,438.91;Inherit;False;Property;_HorizontalSpeed;HorizontalSpeed;2;0;Create;True;0;0;0;False;0;False;0.3;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;119;-8,8;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;1;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;120;-8,8;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;1;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;META;0;2;META;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;121;-8,8;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;1;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
@@ -3235,20 +3237,26 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;123;-8,8;Float;False;False;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;124;-8,8;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;1;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;DistortionVectors;0;6;DistortionVectors;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;4;1;False;;1;False;;4;1;False;;1;False;;True;1;False;;1;False;;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;True;True;0;True;_StencilRefDistortionVec;255;False;;255;True;_StencilWriteMaskDistortionVec;7;False;;3;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;False;True;1;LightMode=DistortionVectors;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;125;-8,8;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;1;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;True;3;False;;False;True;1;LightMode=Picking;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;12;-353.176,-8.717835;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;118;156.5999,8;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;CampfireShader;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Transparent=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;_SrcBlend;0;True;_DstBlend;1;0;True;_AlphaSrcBlend;0;True;_AlphaDstBlend;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullModeForward;False;False;False;True;True;True;True;True;0;True;_ColorMaskTransparentVel;False;False;False;False;False;True;True;0;True;_StencilRef;255;False;;255;True;_StencilWriteMask;7;False;;3;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;0;True;_ZWrite;True;0;True;_ZTestDepthEqualForOpaque;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;31;Surface Type;1;638445661601181054;  Rendering Pass ;0;0;  Rendering Pass;1;0;  Blending Mode;0;0;  Receive Fog;1;0;  Distortion;0;0;    Distortion Mode;0;0;    Distortion Only;1;0;  Depth Write;1;0;  Cull Mode;0;0;  Depth Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;Receive Decals;1;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Shadow Matte;0;0;Cast Shadows;1;0;DOTS Instancing;0;0;GPU Instancing;1;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;LOD CrossFade;0;0;0;8;True;True;True;True;True;True;False;True;False;;False;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;132;-1930.538,107.8639;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,1;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;129;-2068.285,-124.0638;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.Vector2Node;131;-2231.538,-46.13614;Inherit;False;Constant;_Vector2;Vector 2;3;0;Create;True;0;0;0;False;0;False;1,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.RangedFloatNode;128;-2264.285,-124.0638;Inherit;False;Property;_HorizontalTiling;HorizontalTiling;3;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SmoothstepOpNode;117;-499.9023,256.1594;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.4;False;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;11;-1117.343,254.1975;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SmoothstepOpNode;90;-790.756,-162.9269;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.3;False;2;FLOAT;0.8;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SmoothstepOpNode;19;-787.9789,255.7512;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.3;False;2;FLOAT;0.8;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleTimeNode;23;-2795.406,184.8021;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 WireConnection;18;1;22;0
+WireConnection;22;0;132;0
 WireConnection;22;1;107;0
 WireConnection;16;0;15;2
 WireConnection;13;0;14;0
 WireConnection;13;1;17;0
 WireConnection;13;2;90;0
-WireConnection;11;0;16;0
-WireConnection;11;1;18;1
-WireConnection;11;2;20;0
 WireConnection;89;0;16;0
 WireConnection;89;1;18;1
 WireConnection;89;2;91;0
-WireConnection;19;0;11;0
-WireConnection;90;0;89;0
 WireConnection;107;0;26;0
 WireConnection;107;1;109;0
 WireConnection;24;0;111;0
@@ -3261,11 +3269,19 @@ WireConnection;109;0;108;0
 WireConnection;109;1;110;0
 WireConnection;113;0;112;0
 WireConnection;113;1;23;0
-WireConnection;117;0;19;0
+WireConnection;12;0;19;0
+WireConnection;12;1;13;0
 WireConnection;118;0;12;0
 WireConnection;118;1;12;0
 WireConnection;118;2;117;0
-WireConnection;12;0;19;0
-WireConnection;12;1;13;0
+WireConnection;132;0;129;0
+WireConnection;129;0;128;0
+WireConnection;129;1;131;0
+WireConnection;117;0;19;0
+WireConnection;11;0;16;0
+WireConnection;11;1;18;1
+WireConnection;11;2;20;0
+WireConnection;90;0;89;0
+WireConnection;19;0;11;0
 ASEEND*/
-//CHKSM=8E3A172C889E3CA6EE37AC980FCF2B8CF7AA0739
+//CHKSM=36F768BA6C5C956D9CCAD82376A50A62D57F55D8
