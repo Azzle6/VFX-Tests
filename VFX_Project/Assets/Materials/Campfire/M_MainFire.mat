@@ -109,6 +109,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MidFlamesColor: {r: 1.4980392, g: 0.4171922, b: 0.064415745, a: 0}
-    - _OriginZoneColor: {r: 5.2164755, g: 2.9485376, b: 0.7042241, a: 0}
+    - _OriginZoneColor: {r: 11.984314, g: 6.3846607, b: 0.85088605, a: 0}
     - _SurroudingZoneColor: {r: 1.2167859, g: 0.3102804, b: 0.3102804, a: 0}
   m_BuildTextureStacks: []
