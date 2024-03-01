@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _T_Caustics1:
-        m_Texture: {fileID: 2800000, guid: d7be84cbf4e328a4fb89ee5db3add904, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture0:
@@ -90,7 +90,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorizontalSpeed: 0.4
-    - _HorizontalTiling: 1
+    - _HorizontalTiling: 0.6
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -101,13 +101,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VerticalSpeed: 1.2
+    - _VerticalSpeed: 0.6
+    - _VerticalTiling: 0.4
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MidFlamesColor: {r: 1, g: 0.83480835, b: 0.07800001, a: 0}
-    - _OriginZoneColor: {r: 1, g: 1, b: 1, a: 0}
-    - _SurroudingZoneColor: {r: 1, g: 0.21381272, b: 0.023584902, a: 0}
+    - _MidFlamesColor: {r: 1.4980392, g: 0.4171922, b: 0.064415745, a: 0}
+    - _OriginZoneColor: {r: 5.2164755, g: 2.9485376, b: 0.7042241, a: 0}
+    - _SurroudingZoneColor: {r: 1.2167859, g: 0.3102804, b: 0.3102804, a: 0}
   m_BuildTextureStacks: []
