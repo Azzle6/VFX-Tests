@@ -87,15 +87,17 @@ Material:
     m_Floats:
     - _BaseFlameHeight: 0.3
     - _BumpScale: 1
-    - _ColorTextureInfluence: 0.1
+    - _ColorTextureInfluence: 0.2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Edge: 0.76
+    - _EdgesErosion: 0.16
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HorizontalSpeed: 0.5
-    - _HorizontalTiling: 0.6
+    - _HorizontalSpeed: 0.15
+    - _HorizontalTiling: 0.7
     - _MainFlameHeight: 0.75
     - _Metallic: 0
     - _Mode: 0
@@ -103,18 +105,27 @@ Material:
     - _Parallax: 0.02
     - _ShapeTextureInfluence: 0.3
     - _ShapeTextureInfluence1: 0.3
+    - _SmoothnessAlpha: 0.15
+    - _SmoothnessAlpha1: 1
+    - _SmoothnessColor: 0.9
+    - _SmoothnessEdge: 0.82
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _ThresholdAlpha: 0.32
+    - _ThresholdAlpha1: 0.48
+    - _ThresholdColor: 0.4
+    - _ThresholdEdge: 0.1
     - _UVSec: 0
     - _VerticalSpeed: 0.65
     - _VerticalTiling: 0.4
     - _ZWrite: 1
     - __dirty: 0
+    - _theresholdedge: 0.18
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MidFlamesColor: {r: 1.4980392, g: 0.4171922, b: 0.064415745, a: 0}
-    - _OriginZoneColor: {r: 2.2706027, g: 1.4851024, b: 0.70842797, a: 0}
+    - _MidFlamesColor: {r: 0.57254905, g: 0.0520649, b: 0.036643144, a: 0}
+    - _OriginZoneColor: {r: 3.44159, g: 2.1733642, b: 0.9051382, a: 0}
     - _SurroudingZoneColor: {r: 1.2167859, g: 0.3102804, b: 0.3102804, a: 0}
   m_BuildTextureStacks: []
