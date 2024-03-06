@@ -108,14 +108,14 @@ Material:
     - _SmoothnessAlpha: 0.15
     - _SmoothnessAlpha1: 1
     - _SmoothnessColor: 0.9
-    - _SmoothnessEdge: 0.82
+    - _SmoothnessEdge: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _ThresholdAlpha: 0.32
     - _ThresholdAlpha1: 0.48
     - _ThresholdColor: 0.4
-    - _ThresholdEdge: 0.1
+    - _ThresholdEdge: 0
     - _UVSec: 0
     - _VerticalSpeed: 0.65
     - _VerticalTiling: 0.4
