@@ -86,6 +86,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BaseFlameHeight: 0.3
+    - _BendingStrength: 0.15
     - _BumpScale: 1
     - _ColorTextureInfluence: 0.2
     - _Cutoff: 0.5
@@ -93,6 +94,8 @@ Material:
     - _DstBlend: 0
     - _Edge: 0.76
     - _EdgesErosion: 0.16
+    - _FaceWindVariationSpeed: 4.96
+    - _Float1: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -100,8 +103,10 @@ Material:
     - _HorizontalTiling: 0.7
     - _MainFlameHeight: 0.75
     - _Metallic: 0
+    - _MinimumStrength: 0.2818066
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Oscillation: 0.602
     - _Parallax: 0.02
     - _ShapeTextureInfluence: 0.3
     - _ShapeTextureInfluence1: 0.3
@@ -119,8 +124,12 @@ Material:
     - _UVSec: 0
     - _VerticalSpeed: 0.65
     - _VerticalTiling: 0.4
+    - _WindConstency: 1
+    - _WindStretchStrength: 9.7
     - _ZWrite: 1
     - __dirty: 0
+    - _horizontalWind: 7.1
+    - _meshHeight: 1
     - _theresholdedge: 0.18
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
