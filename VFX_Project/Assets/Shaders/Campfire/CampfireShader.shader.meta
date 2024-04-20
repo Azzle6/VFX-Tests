@@ -3,6 +3,8 @@ guid: 6a7c08dd050e54144b9ad096e45197ed
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
+  - _FrontalNoise: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
+  - _HorizontalNoise: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
   - _CausticTexture: {fileID: 2800000, guid: d7be84cbf4e328a4fb89ee5db3add904, type: 3}
   nonModifiableTextures: []
   userData: 

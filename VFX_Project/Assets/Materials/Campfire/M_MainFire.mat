@@ -47,6 +47,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FrontalNoise:
+        m_Texture: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HorizontalNoise:
+        m_Texture: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -71,6 +79,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _T_UV_Dist_Perlin1:
+        m_Texture: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _T_UV_Dist_Perlin2:
+        m_Texture: {fileID: 2800000, guid: 20523dce59b62b6469b86087d24b7f6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture0:
         m_Texture: {fileID: 2800000, guid: d7be84cbf4e328a4fb89ee5db3add904, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -86,7 +102,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BaseFlameHeight: 0.3
-    - _BendingStrength: 0.15
+    - _BendingStrength: 0.37776768
     - _BumpScale: 1
     - _ColorTextureInfluence: 0.2
     - _Cutoff: 0.5
@@ -94,19 +110,23 @@ Material:
     - _DstBlend: 0
     - _Edge: 0.76
     - _EdgesErosion: 0.16
-    - _FaceWindVariationSpeed: 4.96
+    - _FaceWindSpeed: 0.157
+    - _FaceWindVariationSpeed: 0.50711477
     - _Float1: 0
+    - _FrontalWindSpeed: 0.057
+    - _FrontalWindStrength: 3.93
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorizontalSpeed: 0.15
     - _HorizontalTiling: 0.7
+    - _HorizontalWindSpeed: 0.06
     - _MainFlameHeight: 0.75
     - _Metallic: 0
     - _MinimumStrength: 0.2818066
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Oscillation: 0.602
+    - _Oscillation: 0.764
     - _Parallax: 0.02
     - _ShapeTextureInfluence: 0.295
     - _ShapeTextureInfluence1: 0.3
@@ -125,10 +145,13 @@ Material:
     - _VerticalSpeed: 0.65
     - _VerticalTiling: 0.4
     - _WindConstency: 1
-    - _WindStretchStrength: 9.7
+    - _WindSpeed: 0.157
+    - _WindStretchStrength: 12.542599
     - _ZWrite: 1
     - __dirty: 0
-    - _horizontalWind: 1.8
+    - _frontalWindStrength: 1.316572
+    - _horizontalWind: 0.6488633
+    - _horizontalWindStrength: 2.03
     - _meshHeight: 1
     - _theresholdedge: 0.18
     m_Colors:
