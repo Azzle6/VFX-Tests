@@ -113,14 +113,14 @@ Material:
     - _FaceWindSpeed: 0.157
     - _FaceWindVariationSpeed: 0.50711477
     - _Float1: 0
-    - _FrontalWindSpeed: 0.057
-    - _FrontalWindStrength: 3.93
+    - _FrontalWindSpeed: 0.045
+    - _FrontalWindStrength: 2.14
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorizontalSpeed: 0.15
     - _HorizontalTiling: 0.7
-    - _HorizontalWindSpeed: 0.06
+    - _HorizontalWindSpeed: 0.047
     - _MainFlameHeight: 0.75
     - _Metallic: 0
     - _MinimumStrength: 0.2818066
@@ -151,7 +151,7 @@ Material:
     - __dirty: 0
     - _frontalWindStrength: 1.316572
     - _horizontalWind: 0.6488633
-    - _horizontalWindStrength: 2.03
+    - _horizontalWindStrength: 1.34
     - _meshHeight: 1
     - _theresholdedge: 0.18
     m_Colors:
