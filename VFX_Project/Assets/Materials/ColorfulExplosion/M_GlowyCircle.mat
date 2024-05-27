@@ -75,10 +75,10 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortionBlend: 0
+    - _DistortionBlend: 1
     - _DistortionEnabled: 0
-    - _DistortionStrength: 1
-    - _DistortionStrengthScaled: 0.1
+    - _DistortionStrength: 0.11
+    - _DistortionStrengthScaled: 0.011
     - _DstBlend: 10
     - _EmissionEnabled: 1
     - _FlipbookMode: 0
@@ -100,8 +100,8 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 23.968622, g: 23.968622, b: 23.968622, a: 1}
+    - _Color: {r: 47.937244, g: 47.937244, b: 47.937244, a: 1}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 1.6690952, g: 8, b: 8, a: 1}
+    - _EmissionColor: {r: 2.672172, g: 8.564655, b: 8.564655, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
