@@ -5377,7 +5377,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.1169816, b: 0.681, a: 0.23529412}
+      maxColor: {r: 0.18842259, g: 0.16653, b: 0.546, a: 0.33333334}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6192,7 +6192,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6207,8 +6207,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.42368183
         - serializedVersion: 3
-          time: 0.25120318
-          value: 0.79610306
+          time: 0.21089037
+          value: 0.82580674
           inSlope: 1.1675254
           outSlope: 1.1675254
           tangentMode: 0
@@ -21173,9 +21173,9 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 6554
-        atime2: 48573
-        atime3: 48573
+        atime1: 8674
+        atime2: 24672
+        atime3: 25636
         atime4: 0
         atime5: 0
         atime6: 0
@@ -35836,8 +35836,8 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.38222146
-          value: 0.9114067
+          time: 0.3230822
+          value: 0.91140485
           inSlope: -0.34540868
           outSlope: -0.34540868
           tangentMode: 0
@@ -35845,8 +35845,8 @@ ParticleSystem:
           inWeight: 0.08848724
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.78618234
-          value: 0
+          time: 0.6275802
+          value: 0.009900987
           inSlope: -2
           outSlope: -2
           tangentMode: 0
@@ -41116,7 +41116,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.92549026, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
         key2: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -41133,9 +41133,9 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 6554
-        atime2: 48573
-        atime3: 48573
+        atime1: 8674
+        atime2: 24672
+        atime3: 25636
         atime4: 0
         atime5: 0
         atime6: 0
@@ -46202,8 +46202,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 10023
-        atime2: 38936
+        atime1: 7517
+        atime2: 14842
         atime3: 65535
         atime4: 0
         atime5: 0
