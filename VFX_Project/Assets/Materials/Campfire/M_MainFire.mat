@@ -148,7 +148,7 @@ Material:
     - _WindSpeed: 0.157
     - _WindStretchStrength: 12.542599
     - _ZWrite: 1
-    - __dirty: 0
+    - __dirty: 1
     - _frontalWindStrength: 1.316572
     - _horizontalWind: 0.6488633
     - _horizontalWindStrength: 1.34
