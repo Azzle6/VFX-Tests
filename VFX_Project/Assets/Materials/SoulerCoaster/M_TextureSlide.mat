@@ -80,6 +80,7 @@ Material:
     - _BumpScale: 1
     - _CausticInfluence: 0.3
     - _CausticInfluence1: 0.25972283
+    - _ColorCausticInfluence: 0.25972283
     - _ColorShapeSmoothness: 0.35
     - _ColorShapeThreshold: 0.39412588
     - _Cutoff: 0.5
@@ -104,7 +105,7 @@ Material:
     - _TextureWidth: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 0
+    - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgesColor: {r: 0.83248717, g: 0.15736037, b: 1, a: 0}
